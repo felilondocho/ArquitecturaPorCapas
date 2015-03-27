@@ -1,23 +1,23 @@
 <ion-view view-title="Comprar Asientos">
   <ion-content>
   <h1>Comprar asientos para conferencias o eventos</h1>
-  <form ng-submit="processSilla(conferencia)">
+  <form ng-submit="processSilla(servicioconferencia,servicioevento)">
 	  <select>
 	  	<option value="">-- Conferencias disponibles --</option>
-	  	<option value="" ng-model="conferencia.conferencia1"> Conferencia 1 
+	  	<option value="" ng-model="servicioconferencia.conferencia1"> Conferencia 1 
 	  	</option>
-	  	<option value=""ng-model="conferencia.conferencia2"> Conferencia 2 </option>
-	  	<option value=""ng-model="conferencia.conferencia3"> Conferencia 3 </option>
+	  	<option value=""ng-model="servicioconferencia.conferencia2"> Conferencia 2 </option>
+	  	<option value=""ng-model="servicioconferencia.conferencia3"> Conferencia 3 </option>
 	  </select>
 		<br><br>
 	  <select>
 	  	<option value="">-- Eventos en la conferencia Seleccionada --</option>
-	  	<option value=""ng-model="conferencia.evento1"> Evento 1 </option>
+	  	<option value=""ng-model="servicioevento.evento1"> Evento 1 </option>
 	  </select>
 	  <br><br>
 	  <select>
 	  	<option value="">-- Sillas disponibles --</option>
-	  	<option value=""ng-model="sillasdiponibles"> 1 </option>
+	  	<option value=""ng-model="servicioevento.sillasdisponibles"> 1 </option>
 	  </select>
 	  <br><br>
 	    <button type="submit" class="button button-positive" value="enviar">
