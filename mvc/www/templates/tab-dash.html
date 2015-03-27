@@ -1,0 +1,25 @@
+<ion-view view-title="Crear conferencia">
+  <ion-content class="padding">
+  <h1>Crear una conferencia</h1><br>
+<form ng-submit="processConferencia(conferencia)">
+    <label class="item item-input">
+        <input type="text" ng-model="conferencia.nombre" placeholder="Nombre de la conferencia">
+    </label>
+    <label class="item item-input ">
+      <input type="text" ng-model="conferencia.nombrepersona" placeholder="Su nombre">
+    </label>
+    <label class="item item-input">
+      <span class="input-label">Fecha</span>
+      <input type="date" ng-model="conferencia.fecha">
+    </label>
+    <label class="item item-input">
+      <span class="input-label">Numero de asistentes</span>
+      <input type="number" ng-model="conferencia.numeroasistentes">
+    </label>
+    <br>
+    <button type="submit" class="button button-positive" value="enviar">
+      CREAR CONFERENCIA
+    </button>
+    </form>
+  </ion-content>
+</ion-view>

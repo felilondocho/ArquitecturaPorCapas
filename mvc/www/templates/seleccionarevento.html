@@ -1,0 +1,20 @@
+<ion-view view-title="Seleccionar evento">
+  <ion-content class="padding">
+  <h1>Crear un evento</h1>
+  	<form ng-submit="processEvento(evento)">
+  		<label class="item item-input ">
+    		<input type="text" ng-model="evento.nombre" placeholder="Nombre del evento">
+    	</label>
+
+		<select>
+			<option value="">-- Tipo de evento --</option>
+      <option value="">Tipo 1</option>
+      <option value="">Tipo 2</option>
+      <option value="">Tipo 3</option>
+    </select><br><br>
+        <button type="submit" class="button button-positive" value="enviar">
+      		CREAR EVENTO
+    	</button>
+  	</form>
+  </ion-content>
+</ion-view>
