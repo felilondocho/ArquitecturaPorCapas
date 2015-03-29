@@ -6,12 +6,36 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 import co.com.eafit.conferre.conferencias.data.dac.ConferenciaDAO;
+import co.com.eafit.conferre.conferencias.data.dac.EventoDAO;
+import co.com.eafit.conferre.conferencias.data.dac.ListaEsperaDAO;
+import co.com.eafit.conferre.conferencias.data.dac.UsuariosDAO;
+import co.com.eafit.conferre.conferencias.data.dac.asistenteDAO;
 
 public class FabricaDAO {
 	
 	public static ConferenciaDAO createConferenciaDAO(){
 		Connection conn = crearConexion();
 		return new ConferenciaDAO(conn);
+	}
+	
+	public static EventoDAO createEventoDAO(){
+		Connection conn = crearConexion();
+		return new EventoDAO(conn);
+	}
+	
+	public static ListaEsperaDAO createListaEsperaDAO(){
+		Connection conn = crearConexion();
+		return new ListaEsperaDAO(conn);
+	}
+	
+	public static UsuariosDAO createUsuariosDAO(){
+		Connection conn = crearConexion();
+		return new UsuariosDAO(conn);
+	}
+	
+	public static asistenteDAO createAsistenteDAO(){
+		Connection conn = crearConexion();
+		return new asistenteDAO(conn);
 	}
 	
 	public static Connection crearConexion(){

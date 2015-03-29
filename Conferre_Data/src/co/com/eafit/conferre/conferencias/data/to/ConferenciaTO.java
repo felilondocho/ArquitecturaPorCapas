@@ -5,8 +5,23 @@ import java.util.Date;
 import co.com.eafit.conferre.conferencias.data.base.ObjetoTO;
 
 public class ConferenciaTO implements ObjetoTO {
+	
+	private String id;
+	private String nombre;
+	private String nombreConferencista;
+	private String tipo;
+	private Date fecha;
+	private String lugar;
+	private int sillasDisponibles;
+	
 	public String getNombre() {
 		return nombre;
+	}
+	public String getLugar() {
+		return lugar;
+	}
+	public void setLugar(String lugar) {
+		this.lugar = lugar;
 	}
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
@@ -41,10 +56,5 @@ public class ConferenciaTO implements ObjetoTO {
 	public void setId(String id) {
 		this.id = id;
 	}
-	private String nombre;
-	private String nombreConferencista;
-	private String tipo;
-	private Date fecha;
-	private int sillasDisponibles;
-	private String id;
+
 }
