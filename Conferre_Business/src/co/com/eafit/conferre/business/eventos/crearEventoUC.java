@@ -13,7 +13,7 @@ import co.com.eafit.conferre.conferencias.data.to.EventoTO;
 import co.com.eafit.conferre.conferencias.data.to.SillasTO;
 import co.com.eafit.conferre.soporte.ExcepcionUnitOfWork;
 
-public class crearEventoUC implements UnitOfWork{
+public class CrearEventoUC implements UnitOfWork{
 	
 
 	@Override

@@ -29,9 +29,11 @@ public class CrearListaEsperaUC implements UnitOfWork{
 	}
 	
 	private void validarDatosListaEspera(ListaEsperaTO listaDeEspera) throws ExcepcionValidacion{
-		if(listaDeEspera.getConferenciaId()==null || listaDeEspera.getNamae() == null || 
-				listaDeEspera.getEmail() == null){
+		if(listaDeEspera.getConferenciaId()==null){
 			throw new ExcepcionValidacion("Conferencia no valida");
+		}
+		if(listaDeEspera.getNamae() == null || listaDeEspera.getEmail() == null){
+			throw new ExcepcionValidacion("Nombre o email no validos");
 		}
 	}
 
