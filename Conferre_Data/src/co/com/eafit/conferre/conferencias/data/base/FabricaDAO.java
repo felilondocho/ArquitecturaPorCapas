@@ -9,7 +9,7 @@ import co.com.eafit.conferre.conferencias.data.dac.ConferenciaDAO;
 import co.com.eafit.conferre.conferencias.data.dac.EventoDAO;
 import co.com.eafit.conferre.conferencias.data.dac.ListaEsperaDAO;
 import co.com.eafit.conferre.conferencias.data.dac.UsuariosDAO;
-import co.com.eafit.conferre.conferencias.data.dac.asistenteDAO;
+import co.com.eafit.conferre.conferencias.data.dac.SillasDAO;
 
 public class FabricaDAO {
 	
@@ -33,9 +33,9 @@ public class FabricaDAO {
 		return new UsuariosDAO(conn);
 	}
 	
-	public static asistenteDAO createAsistenteDAO(){
+	public static SillasDAO createSillasDAO(){
 		Connection conn = crearConexion();
-		return new asistenteDAO(conn);
+		return new SillasDAO(conn);
 	}
 	
 	public static Connection crearConexion(){

@@ -13,27 +13,30 @@ import java.util.UUID;
 import co.com.eafit.conferre.conferencias.data.base.DAOGenerico;
 import co.com.eafit.conferre.conferencias.data.base.ObjetoTO;
 import co.com.eafit.conferre.conferencias.data.to.ConferenciaTO;
-import co.com.eafit.conferre.conferencias.data.to.asistenteTO;
+import co.com.eafit.conferre.conferencias.data.to.SillasTO;
 
-public class asistenteDAO implements DAOGenerico {
+public class SillasDAO implements DAOGenerico {
 	
 	Connection conn;
 	
-	public asistenteDAO(Connection conn2){
+	public SillasDAO(Connection conn2){
 		this.conn = conn2;
 	}
 
 	@Override
 	public ObjetoTO crear(ObjetoTO parametro) {
-		asistenteTO as = null;
+		SillasTO as = null;
 		
 		try {
-			as = (asistenteTO) parametro;
-			PreparedStatement prep = conn.prepareStatement("INSERT INTO asistentes values(?,?,?,?)");
+			as = (SillasTO) parametro;
+			PreparedStatement prep = conn.prepareStatement("INSERT INTO asistentes values(?,?,?,?,?,?,?)");
 			
-			prep.setString(2, as.getNamae());
-			prep.setString(3, as.getCc());
-			prep.setString(4, as.getEmail());
+			prep.setString(2, as.getIdConf());
+			prep.setString(3, as.getIdEv());
+			prep.setInt(4, as.getNumSilla());
+			prep.setBoolean(5, as.isOcupado());
+			prep.setString(6, as.getOcupante());
+			prep.setString(7, as.getEmail());
 			
 			do{
 				UUID id = UUID.randomUUID();
@@ -50,22 +53,29 @@ public class asistenteDAO implements DAOGenerico {
 	@Override
 	public Collection<ObjetoTO> recuperar(ObjetoTO parametros) {
 
-		asistenteTO as = null;
+		SillasTO as = null;
 		List<ObjetoTO> res = new ArrayList<ObjetoTO>();
 		PreparedStatement prep;
 		try{
-			as = (asistenteTO) parametros;
-			prep = conn.prepareStatement("SELECT * FROM asistentes WHERE id = ? OR namae = ? OR cc =? OR email = ?");
+			as = (SillasTO) parametros;
+			prep = conn.prepareStatement("SELECT * FROM asistentes WHERE id = ? OR idConf = ? OR idEv =? OR "
+					+ "numSilla = ? OR ocupado = ? OR ocupante = ? OR email = ?");
 			prep.setString(1, as.getId());
-			prep.setString(2, as.getNamae());
-			prep.setString(3, as.getCc());
-			prep.setString(4, as.getEmail());
+			prep.setString(2, as.getIdConf());
+			prep.setString(3, as.getIdEv());
+			prep.setInt(4, as.getNumSilla());;
+			prep.setBoolean(5, as.isOcupado());
+			prep.setString(6, as.getOcupante());
+			prep.setString(7, as.getEmail());
 			ResultSet res2 = prep.executeQuery();
 			while(res2.next()){
-				asistenteTO fila = new asistenteTO();
+				SillasTO fila = new SillasTO();
 				fila.setId(res2.getString("id"));
-				fila.setNamae(res2.getString("namae"));
-				fila.setCc(res2.getString("cc"));
+				fila.setIdConf(res2.getString("idConf"));
+				fila.setIdEv(res2.getString("idEv"));
+				fila.setNumSilla(res2.getInt("numSilla"));
+				fila.setOcupado(res2.getBoolean("ocupado"));
+				fila.setOcupante(res2.getString("ocupante"));
 				fila.setEmail(res2.getString("email"));
 				res.add(fila);
 			}
@@ -79,13 +89,17 @@ public class asistenteDAO implements DAOGenerico {
 	@Override
 	public ObjetoTO update(ObjetoTO nuevoObjeto) {
 
-		asistenteTO as = null;
+		SillasTO as = null;
 		try{
-			as = (asistenteTO) nuevoObjeto;
-			PreparedStatement prep = conn.prepareStatement("UPDATE asistentes SET namae = ?, cc = ?, email = ?");
-			prep.setString(1, as.getNamae());
-			prep.setString(2, as.getCc());
-			prep.setString(3, as.getEmail());
+			as = (SillasTO) nuevoObjeto;
+			PreparedStatement prep = conn.prepareStatement("UPDATE asistentes SET idConf = ?, idEv = ?, numSilla = ?, "
+					+ "ocupado = ?, ocupante = ?, email = ?");
+			prep.setString(1, as.getIdConf());
+			prep.setString(2, as.getIdEv());
+			prep.setInt(3, as.getNumSilla());
+			prep.setBoolean(4, as.isOcupado());
+			prep.setString(5, as.getOcupante());
+			prep.setString(6, as.getEmail());
 			int x = prep.executeUpdate();
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -95,10 +109,10 @@ public class asistenteDAO implements DAOGenerico {
 
 	@Override
 	public int borrar(ObjetoTO objetoaBorrar) {
-		asistenteTO as = null;
+		SillasTO as = null;
 		int r = 0;
 		try{
-			as = (asistenteTO) objetoaBorrar;
+			as = (SillasTO) objetoaBorrar;
 			PreparedStatement prep = conn.prepareStatement("DELETE FROM asistentes WHERE id = ?");
 			prep.setString(1, as.getId());
 			r = prep.executeUpdate();

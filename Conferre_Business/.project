@@ -3,6 +3,8 @@
 	<name>Conferre_Business</name>
 	<comment></comment>
 	<projects>
+		<project>Conferre_Data</project>
+		<project>Conferre_Soporte</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

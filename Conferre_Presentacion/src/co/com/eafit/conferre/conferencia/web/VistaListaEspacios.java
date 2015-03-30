@@ -5,8 +5,8 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 
+import co.com.eafit.conferre.business.conferencias.ConferenciasFacade;
 import co.com.eafit.conferre.conferencia.web.model.Espacio;
-import co.com.eafit.conferre.conferencias.business.ConferenciasFacade;
 
 @ManagedBean
 public class VistaListaEspacios {

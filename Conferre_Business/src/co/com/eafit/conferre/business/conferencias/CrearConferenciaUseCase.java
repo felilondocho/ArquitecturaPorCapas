@@ -1,4 +1,4 @@
-package co.com.eafit.conferre.conferencias.business;
+package co.com.eafit.conferre.business.conferencias;
 
 import java.util.UUID;
 
