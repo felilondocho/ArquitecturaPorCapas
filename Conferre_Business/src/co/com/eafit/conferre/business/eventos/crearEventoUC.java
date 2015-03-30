@@ -30,7 +30,7 @@ public class crearEventoUC implements UnitOfWork{
 			e.printStackTrace();
 		}
 		
-		return null;
+		return res;
 	}
 	
 	private void validarEvento(EventoTO evento) throws ValidationException {
@@ -44,11 +44,17 @@ public class crearEventoUC implements UnitOfWork{
 	
 	private void crearSillas(EventoTO evento){
 		SillasTO as = null;
+		SillasTO res = null;
 		SillasDAO asDAO = FabricaDAO.createSillasDAO();
 		
 		for(int i = 1; i < evento.getNumSillas()+1; i++){
-			
+			as.setIdConf(evento.getIdConferencia());
+			as.setIdEv(evento.getId());
+			as.setNumSilla(i);
+			as.setOcupado(false);
+			as.setOcupante("vacio");
+			as.setEmail("vacio");
+			res = (SillasTO) asDAO.crear(as);
 		}
-		
 	}
 }
