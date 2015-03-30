@@ -4,7 +4,6 @@ import co.com.eafit.conferre.conferencias.data.base.ObjetoTO;
 
 public class SillasTO implements ObjetoTO {
 	
-	private String id;
 	private String idConf;
 	private String idEv;
 	private int numSilla;
@@ -13,12 +12,7 @@ public class SillasTO implements ObjetoTO {
 	private String email;
 	
 	
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
+
 	public String getIdConf() {
 		return idConf;
 	}

@@ -29,20 +29,16 @@ public class SillasDAO implements DAOGenerico {
 		
 		try {
 			as = (SillasTO) parametro;
-			PreparedStatement prep = conn.prepareStatement("INSERT INTO asistentes values(?,?,?,?,?,?,?)");
+			PreparedStatement prep = conn.prepareStatement("INSERT INTO asistentes values(?,?,?,?,?,?)");
 			
-			prep.setString(2, as.getIdConf());
-			prep.setString(3, as.getIdEv());
-			prep.setInt(4, as.getNumSilla());
-			prep.setBoolean(5, as.isOcupado());
-			prep.setString(6, as.getOcupante());
-			prep.setString(7, as.getEmail());
+			prep.setString(1, as.getIdConf());
+			prep.setString(2, as.getIdEv());
+			prep.setInt(3, as.getNumSilla());
+			prep.setBoolean(4, as.isOcupado());
+			prep.setString(5, as.getOcupante());
+			prep.setString(6, as.getEmail());
 			
-			do{
-				UUID id = UUID.randomUUID();
-				as.setId(id.toString());
-				prep.setString(1, as.getId());
-			} while (prep.executeUpdate() == 0);
+			int res = prep.executeUpdate();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -58,19 +54,17 @@ public class SillasDAO implements DAOGenerico {
 		PreparedStatement prep;
 		try{
 			as = (SillasTO) parametros;
-			prep = conn.prepareStatement("SELECT * FROM asistentes WHERE id = ? OR idConf = ? OR idEv =? OR "
+			prep = conn.prepareStatement("SELECT * FROM asistentes WHERE idConf = ? OR idEv =? OR "
 					+ "numSilla = ? OR ocupado = ? OR ocupante = ? OR email = ?");
-			prep.setString(1, as.getId());
-			prep.setString(2, as.getIdConf());
-			prep.setString(3, as.getIdEv());
-			prep.setInt(4, as.getNumSilla());;
-			prep.setBoolean(5, as.isOcupado());
-			prep.setString(6, as.getOcupante());
-			prep.setString(7, as.getEmail());
+			prep.setString(1, as.getIdConf());
+			prep.setString(2, as.getIdEv());
+			prep.setInt(3, as.getNumSilla());;
+			prep.setBoolean(4, as.isOcupado());
+			prep.setString(5, as.getOcupante());
+			prep.setString(6, as.getEmail());
 			ResultSet res2 = prep.executeQuery();
 			while(res2.next()){
 				SillasTO fila = new SillasTO();
-				fila.setId(res2.getString("id"));
 				fila.setIdConf(res2.getString("idConf"));
 				fila.setIdEv(res2.getString("idEv"));
 				fila.setNumSilla(res2.getInt("numSilla"));
@@ -113,8 +107,9 @@ public class SillasDAO implements DAOGenerico {
 		int r = 0;
 		try{
 			as = (SillasTO) objetoaBorrar;
-			PreparedStatement prep = conn.prepareStatement("DELETE FROM asistentes WHERE id = ?");
-			prep.setString(1, as.getId());
+			PreparedStatement prep = conn.prepareStatement("DELETE FROM asistentes WHERE idEv = ? AND numSilla = ?");
+			prep.setString(1, as.getIdEv());
+			prep.setInt(2, as.getNumSilla());
 			r = prep.executeUpdate();
 		}catch(SQLException e){
 			e.printStackTrace();
