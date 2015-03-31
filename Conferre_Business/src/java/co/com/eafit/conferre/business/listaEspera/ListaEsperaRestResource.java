@@ -46,6 +46,8 @@ public class ListaEsperaRestResource {
      * @param content representation for the resource
      * @return an HTTP response with content of the updated or created resource.
      */
+    
+    //Metodo Put para crear la lista de espera
     @PUT
     @Consumes("application/json")
     public void putJson(ObjetoTO obj) {

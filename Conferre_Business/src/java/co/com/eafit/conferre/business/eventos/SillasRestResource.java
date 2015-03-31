@@ -46,6 +46,8 @@ public class SillasRestResource {
      * @param content representation for the resource
      * @return an HTTP response with content of the updated or created resource.
      */
+    
+    //Metodo Put para ejecutar la venta de la silla
     @PUT
     @Consumes("application/json")
     public void putJson(String oc,String em, ObjetoTO parametro) {

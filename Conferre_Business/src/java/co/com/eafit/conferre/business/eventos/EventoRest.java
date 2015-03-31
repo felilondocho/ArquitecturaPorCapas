@@ -45,6 +45,8 @@ public class EventoRest {
      * @param content representation for the resource
      * @return an HTTP response with content of the updated or created resource.
      */
+    
+    //Metodo Put para ejecutar crear evento y crear sillas
     @PUT
     @Consumes("application/json")
     public void putJson(String content,EventoTO ev) {
