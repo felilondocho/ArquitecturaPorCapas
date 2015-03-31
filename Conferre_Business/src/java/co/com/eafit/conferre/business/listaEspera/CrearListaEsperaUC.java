@@ -12,6 +12,7 @@ import co.com.eafit.conferre.soporte.ExcepcionValidacion;
 
 public class CrearListaEsperaUC implements UnitOfWork{
 
+	//Crea una entrada en la lista de espera
 	@Override
 	public ObjetoTO ejecutar(ObjetoTO parametros) throws ExcepcionUnitOfWork {
 		ListaEsperaTO le = (ListaEsperaTO) parametros;
@@ -28,6 +29,7 @@ public class CrearListaEsperaUC implements UnitOfWork{
 		return res;
 	}
 	
+	//validaciones necesarias para crear entradas en la lista de espera
 	private void validarDatosListaEspera(ListaEsperaTO listaDeEspera) throws ExcepcionValidacion{
 		if(listaDeEspera.getConferenciaId()==null){
 			throw new ExcepcionValidacion("Conferencia no valida");

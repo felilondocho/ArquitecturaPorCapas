@@ -16,6 +16,7 @@ import co.com.eafit.conferre.soporte.ExcepcionUnitOfWork;
 
 public class GetSillasDisponiblesUC{
 
+	//El metodo nos retorna que sillas estan disponibles para un evento especifico
 	public Collection<ObjetoTO> ejecutar(ObjetoTO parametros) throws ExcepcionUnitOfWork {
 		EventoTO ev = (EventoTO) parametros;
 		List<ObjetoTO> res = new ArrayList<ObjetoTO>();
@@ -33,6 +34,7 @@ public class GetSillasDisponiblesUC{
 		return res;
 	}
 	
+	//Validaciones para retornar sillas disponibles
 	private void validacion(EventoTO evento) throws ValidationException {
 		if(evento.getId()==null){
 			throw new ValidationException("evento invalido");

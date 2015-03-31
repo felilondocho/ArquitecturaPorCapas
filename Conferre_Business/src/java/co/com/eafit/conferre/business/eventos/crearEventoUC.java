@@ -15,7 +15,7 @@ import co.com.eafit.conferre.soporte.ExcepcionUnitOfWork;
 
 public class CrearEventoUC implements UnitOfWork{
 	
-
+	//Crea un evento en la tabla de evento, con sus sillas correspondientes en la tabla de sillas
 	@Override
 	public ObjetoTO ejecutar(ObjetoTO parametros) throws ExcepcionUnitOfWork {
 		EventoTO ev = (EventoTO) parametros;
@@ -33,6 +33,7 @@ public class CrearEventoUC implements UnitOfWork{
 		return res;
 	}
 	
+	//validaciones necesarias para crear evento
 	private void validarEvento(EventoTO evento) throws ValidationException {
 		if (evento.getNamae() == null){
 			throw new ValidationException("nombre de evento invalido (no puede ser nulo)");
@@ -42,6 +43,8 @@ public class CrearEventoUC implements UnitOfWork{
 		}
 	}
 	
+	//Metodo que crea en la tabla de sillas todas las sillas que tiene un evento
+	//se usa en el momento de creacion del evento
 	private void crearSillas(EventoTO evento){
 		SillasTO as = null;
 		SillasTO res = null;

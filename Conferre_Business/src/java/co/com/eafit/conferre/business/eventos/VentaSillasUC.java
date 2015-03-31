@@ -20,6 +20,8 @@ public class VentaSillasUC implements UnitOfWork {
 		this.email = em;
 	}
 
+	//Este metodo nos permite hacer un UPDATE en la tabla de sillas, para indicar
+	//que la silla seleccionada ya no esta ocupada y tener los datos del que ocupa la silla
 	@Override
 	public ObjetoTO ejecutar(ObjetoTO parametros) throws ExcepcionUnitOfWork {
 		SillasTO silla = (SillasTO) parametros;
@@ -37,7 +39,7 @@ public class VentaSillasUC implements UnitOfWork {
 		return res;
 	}
 	
-
+	//validaciones necesarias para la venta de sillas
 	private void validacion(SillasTO silla) throws ValidationException {
 		if(silla.isOcupado()==false){
 			throw new ValidationException("error en la venta");

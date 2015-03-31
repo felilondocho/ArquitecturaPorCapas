@@ -11,6 +11,7 @@ import co.com.eafit.conferre.soporte.ExcepcionValidacion;
 
 public class CrearConferenciaUseCase implements UnitOfWork {
 
+//Este metodo crea una entrada en la tabla de conferencias
 	@Override
 	public ObjetoTO ejecutar(ObjetoTO parametros) throws ExcepcionUnitOfWork {
 		ConferenciaTO conferenciaTO = (ConferenciaTO) parametros;
@@ -30,6 +31,7 @@ public class CrearConferenciaUseCase implements UnitOfWork {
 		return resultado;
 	}
 
+//Este metodo es una validacion requerida para crear la entrada en la tabla de conferencias
 	private void validarDatosConferencia(ConferenciaTO conferenciaTO) throws ExcepcionValidacion{
 		if(conferenciaTO.getNombre() == null){
 			throw new ExcepcionValidacion("El nombre de la conferencia no puede ser nulo");

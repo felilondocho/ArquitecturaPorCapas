@@ -1,3 +1,8 @@
+/*
+*En esta clase se crea la conexion con todos los DAOs.
+*Esta conexion se usa despues por la capa de negocios
+*/
+
 package co.com.eafit.conferre.conferencias.data.base;
 
 import java.sql.Connection;
