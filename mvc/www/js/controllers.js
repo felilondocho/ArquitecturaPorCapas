@@ -1,7 +1,9 @@
+//Controlador en MVC
 angular.module('starter.controllers', [])
 
 .controller('DashCtrl', function($scope,$state,$http) {
 		$scope.processConferencia = function(conferencia){
+      //Metodo POST en rest para crear conferencia
 		$http({
   			method  : 'POST',
   			url     : 'http://domain.com/webservice/conferenciarest',
@@ -19,6 +21,7 @@ angular.module('starter.controllers', [])
 
 .controller('SeleccionarEventoCtrl', function($scope,$state,$http) {
 	$scope.processEvento = function(evento){
+     //Metodo POST en rest para crear evento
 		$http({
   		method  : 'POST',
   		url     : 'http://domain.com/webservice/eventorest',
@@ -64,6 +67,7 @@ angular.module('starter.controllers', [])
 })
 
 .controller('SillaCompradaCtrl', function($scope,$state,$http) {
+  //Obtener las sillas que se compraron
 	  $http.get("http://domain.com/webservice/sillasrest")
     	.success(function(response){
       $scope.servicio = response;
